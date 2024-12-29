@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ title|capfirst }}</h1>
+
+  {% if post.photo %}
+    <img src="" alt="" />
+  {% endif %}
+
+  {{ post.content|linebreaks }}
+{% endblock %}

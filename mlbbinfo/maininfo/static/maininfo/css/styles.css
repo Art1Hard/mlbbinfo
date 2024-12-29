@@ -1,0 +1,314 @@
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* Common */
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+	display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+ul,
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img,
+svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+	font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background-color: transparent;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+button,
+input[type="submit"] {
+	display: inline-block;
+	box-shadow: none;
+	background-color: transparent;
+	background: none;
+	cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+	outline: none;
+}
+
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+legend {
+	display: block;
+}
+
+/* Reset and base styles */
+
+@font-face {
+	font-family: "Dusha V5";
+	src: url("../fonts/Dusha-V5-Regular.woff2") format("woff2"),
+		url("../fonts/Dusha-V5-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	--primary-color: #252525;
+	--secondary-color: #121212;
+	--accent-color: #ffcc00;
+	--bg-card-color: #303030;
+	--primary-text-color: #e7e7e7;
+	--secondary-text-color: #a8a8a8;
+}
+
+body {
+	color: var(--primary-text-color);
+	font-family: "Dusha V5";
+	background-color: var(--primary-color);
+}
+
+.container {
+	max-width: 1470px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+/** <Header> **/
+
+.header {
+	background-color: var(--secondary-color);
+}
+
+.header__container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px;
+}
+
+.header__logo {
+	position: relative;
+	bottom: 6px;
+	color: var(--accent-color);
+	max-width: 235px;
+	width: 100%;
+	max-height: 52px;
+}
+
+/** </Header> **/
+
+/** <Nav> **/
+
+.nav__list {
+	font-size: 22px;
+	display: flex;
+	column-gap: 40px;
+}
+
+.nav__link {
+	color: var(--secondary-text-color);
+	transition: color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+	color: var(--primary-text-color);
+}
+
+.nav__link--active {
+	cursor: default;
+	color: var(--accent-color);
+}
+
+/** </Nav> **/
+
+/** <Intro> **/
+
+.intro {
+	padding: 90px 0;
+}
+
+.intro__title {
+	font-size: 64px;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.intro__posts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.intro__post {
+	flex: 100%;
+}
+
+/** </Intro> **/
+
+/** <Post> **/
+.post {
+	max-width: 460px;
+	border-radius: 35px;
+	background-color: var(--bg-card-color);
+}
+
+.post__img-cover {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.post__img-cover::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 35px;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58%, #1d1d1d 100%);
+}
+
+.post__img {
+	max-height: 256px;
+	width: 100%;
+	object-fit: cover;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 35px;
+}
+
+.post__container {
+	padding: 0 15px 30px;
+}
+
+.post__header {
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.post__name {
+	font-size: 32px;
+}
+
+.post__column-line {
+	font-size: 24px;
+	text-align: end;
+}
+
+.post__line-title {
+	margin-bottom: 5px;
+}
+
+.post__line {
+	color: var(--accent-color);
+	font-size: 20px;
+}
+
+.post__content {
+	display: inline-block;
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+
+.post__open-btn {
+	display: block;
+	background-color: var(--accent-color);
+	color: var(--secondary-color);
+	transition: all 0.2s ease-in;
+	font-size: 22px;
+	padding: 10px;
+	text-align: center;
+	border-radius: 18px;
+}
+
+.post__open-btn:hover {
+	background-color: var(--secondary-color);
+	color: var(--accent-color);
+}
+
+/** </Post> **/
+
+/** <ApearAnim> **/
+/* Скрываем элемент по умолчанию */
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Когда элемент становится видимым, добавляем класс для анимации */
+.fade-in.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+/** </ApearAnim> **/

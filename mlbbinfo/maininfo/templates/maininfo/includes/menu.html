@@ -1,0 +1,9 @@
+{% for item in menu %}
+  <li class="nav__item {% if request.resolver_match.view_name == item.url_name %}nav__item--active{% endif %}">
+    {% if request.resolver_match.view_name == item.url_name %}
+      <p class="nav__link--active">{{ item.title }}</p>
+    {% else %}
+      <a class="nav__link" href="{% url item.url_name %}">{{ item.title }}</a>
+    {% endif %}
+  </li>
+{% endfor %}

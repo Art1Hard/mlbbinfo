@@ -1,0 +1,33 @@
+{% load static %}
+{% load maininfo_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="{% static 'maininfo/css/styles.css' %}" />
+    <title>{{ title|upper }}</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container container">
+        <a href="{% url 'home' %}">
+          <svg class="header__logo">
+            <use xlink:href="{% static 'maininfo/img/sprite.svg' %}#logo"></use>
+          </svg>
+        </a>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            {% show_menu request %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'maininfo/js/fade-in.js' %}"></script>
+  </body>
+</html>
