@@ -1,6 +1,8 @@
 from django.contrib import admin
 from maininfo import models
 
+admin.site.register(models.Line)
+
 
 @admin.register(models.Hero)
 class HeroAdmin(admin.ModelAdmin):

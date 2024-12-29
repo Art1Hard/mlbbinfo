@@ -20,7 +20,15 @@
                     {% if post.lines %}
                       <div class="post__column-line">
                         <p class="post__line-title">Линии:</p>
-                        <p class="post__line">{{ post.lines|join:', '|capfirst }}</p>
+                        <p class="post__line">
+                          {% for line in post.lines.all %}
+                            {% if forloop.first %}
+                              {{ line|capfirst }}{% if not forloop.last %},{% endif %}
+                            {% else %}
+                              {{ line }}{% if not forloop.last %},{% endif %}
+                            {% endif %}
+                          {% endfor %}
+                        </p>
                       </div>
                     {% endif %}
                   </div>
