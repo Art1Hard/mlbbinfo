@@ -9,34 +9,32 @@
 
         <ul class="intro__posts">
           {% for post in posts %}
-            {% if post.is_published %}
-              <li class="intro__post post fade-in">
-                <div class="post__img-cover">
-                  <img class="post__img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="" />
+            <li class="intro__post-card post-card fade-in">
+              <a class="post-card__img-cover" href="{{ post.get_absolute_url }}"><img class="post-card__img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="" /></a>
+              <div class="post-card__container">
+                <div class="post-card__header">
+                  <h2 class="post-card__name">{{ post.title|capfirst }}</h2>
+                  {% if post.lines %}
+                    <div class="post-card__column-line">
+                      <p class="post-card__line-title">Линии:</p>
+                      <p class="post-card__line">
+                        {% for line in post.lines.all %}
+                          {% if forloop.first %}
+                            {{ line|capfirst }}{% if not forloop.last %},{% endif %}
+                          {% else %}
+                            {{ line }}{% if not forloop.last %},{% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      </p>
+                    </div>
+                  {% endif %}
                 </div>
-                <div class="post__container">
-                  <div class="post__header">
-                    <h2 class="post__name">{{ post.title|capfirst }}</h2>
-                    {% if post.lines %}
-                      <div class="post__column-line">
-                        <p class="post__line-title">Линии:</p>
-                        <p class="post__line">
-                          {% for line in post.lines.all %}
-                            {% if forloop.first %}
-                              {{ line|capfirst }}{% if not forloop.last %},{% endif %}
-                            {% else %}
-                              {{ line }}{% if not forloop.last %},{% endif %}
-                            {% endif %}
-                          {% endfor %}
-                        </p>
-                      </div>
-                    {% endif %}
-                  </div>
-                  <small class="post__content">{{ post.content|truncatechars:175 }}</small>
-                  <a class="post__open-btn" href="{{ post.get_absolute_url }}">Читать дальше</a>
+                <div class="post-card__content">
+                  {{ post.content|safe|truncatechars:173 }}
+                  <a class="post-card__open-btn" href="{{ post.get_absolute_url }}">Читать дальше</a>
                 </div>
-              </li>
-            {% endif %}
+              </div>
+            </li>
           {% endfor %}
         </ul>
       </div>

@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-  <h1>{{ title|capfirst }}</h1>
-
-  {% if post.photo %}
-    <img src="" alt="" />
-  {% endif %}
-
-  {{ post.content|linebreaks }}
+  <main class="post">
+    <section class="post__header">
+      <div class="post__container container">
+        <div class="post__header-img-cover">
+          <img class="post__header-img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="" />
+          <h1 class="post__header-title">{{ title|capfirst }}</h1>
+          <p class="post__header-bo bo">{{ post.bo }}</p>
+        </div>
+      </div>
+    </section>
+    <section class="post__description post-description">
+      <div class="container">
+        <h2 class="post-description__title">Описание</h2>
+        {{ post.content|safe }}
+      </div>
+    </section>
+  </main>
 {% endblock %}

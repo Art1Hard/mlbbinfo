@@ -2,6 +2,7 @@ from django.contrib import admin
 from maininfo import models
 
 admin.site.register(models.Line)
+admin.site.register(models.BO)
 
 
 @admin.register(models.Hero)
