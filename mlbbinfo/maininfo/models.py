@@ -5,9 +5,13 @@ from ckeditor.fields import RichTextField
 
 class Line(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("line", kwargs={"line_slug": self.slug})
 
 
 class BO(models.Model):
@@ -32,6 +36,7 @@ class Hero(models.Model):
         BO, on_delete=models.PROTECT, related_name="heroes", db_index=True
     )
     content = RichTextField(blank=True, verbose_name="описание")
+    views = models.PositiveIntegerField(default=0)
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="время обновления")
     is_published = models.BooleanField(default=False, verbose_name="опубликован?")

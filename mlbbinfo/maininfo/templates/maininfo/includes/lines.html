@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li>
+      <a href="{% url 'home' %}">Все</a>
+    </li>
+    {% for line in lines %}
+      <li>
+        <a href="{{ line.get_absolute_url }}">{{ line.name|capfirst }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

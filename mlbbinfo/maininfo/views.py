@@ -1,14 +1,14 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from django.template.defaultfilters import upper
+from django.template.defaultfilters import capfirst
 
-from .models import Hero
+from .models import Hero, Line
 
 menu = [
     {"title": "О сайте", "url_name": "about"},
     {"title": "Герои", "url_name": "hero"},
-    {"title": "Линии", "url_name": "line"},
+    # {"title": "Линии", "url_name": "line"},
     {"title": "Рассы", "url_name": "rase"},
     # {"title": "Обратная связь", "url_name": "contact"},
     # {"title": "Добавить статью", "url_name": "add_post"},
@@ -36,8 +36,17 @@ def about(request):
     return render(request, "maininfo/about.html", context=data)
 
 
+def changeViews(request, post):
+    session_key = f"viewed_post_{post.pk}"
+    if not request.session.get(session_key, False):
+        post.views += 1
+        post.save(update_fields=["views"])
+        request.session[session_key] = True  # Помечаем пост как просмотренный
+
+
 def show_post(request, post_slug):
     post = get_object_or_404(Hero, slug=post_slug)
+    changeViews(request, post)
     data = {"title": post.title, "post": post}
     return render(request, "maininfo/post.html", context=data)
 
@@ -46,8 +55,11 @@ def heroes(request):
     return HttpResponse("dssda")
 
 
-def lines(request):
-    return HttpResponse("dssda")
+def show_line(request, line_slug):
+    line = get_object_or_404(Line, slug=line_slug)
+    posts = Hero.published.filter(lines=line)
+    data = {"title": f"Линия: {capfirst(line.name)}", "posts": posts}
+    return render(request, "maininfo/index.html", context=data)
 
 
 def rases(request):
