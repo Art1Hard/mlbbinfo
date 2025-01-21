@@ -6,7 +6,12 @@
     <section class="post__header">
       <div class="post__container container">
         <div class="post__header-img-cover">
-          <img class="post__header-img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="" />
+          {% if post.image %}
+            <img class="post__header-img" src="{{ post.image.url }}" alt="{{ post.alt }}" />
+          {% else %}
+            <img class="post__header-img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="{{ post.alt }}" />
+          {% endif %}
+
           <h1 class="post__header-title">{{ title|capfirst }}</h1>
           <p class="post__header-bo bo">{{ post.bo }}</p>
         </div>

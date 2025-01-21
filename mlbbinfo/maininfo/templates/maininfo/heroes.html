@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load maininfo_tags %}
+
+{% block content %}
+  <main>
+    <section class="heroes">
+      <div class="heroes__container container">
+        {% comment %} {% show_lines %} {% endcomment %}
+        <h1 class="heroes__title">{{ title }}</h1>
+
+        <ul class="heroes__posts">
+          {% for post in posts %}
+            <li class="heroes__post-card post-card fade-in">
+              <a class="post-card__img-cover" href="{{ post.get_absolute_url }}">
+                {% if post.image %}
+                  <img class="post-card__img" src="{{ post.image.url }}" alt="{{ post.alt }}" />
+                {% else %}
+                  <img class="post-card__img" src="{% static 'maininfo/img/post-img.jpeg' %}" />
+                {% endif %}
+              </a>
+              <div class="post-card__container">
+                <div class="post-card__header">
+                  <h2 class="post-card__name">{{ post.title|capfirst }}</h2>
+                  {% if post.lines %}
+                    <div class="post-card__column-line">
+                      <p class="post-card__line-title">Линии:</p>
+                      <ul class="post-card__line">
+                        {% for line in post.lines.all %}
+                          <li class="post-card__line-item">
+                            <a class="post-card__line-link" href="{{ line.get_absolute_url }}"><img class="post-card__line-img" src="{{ line.icon.url }}" alt="{{ line.alt }}" /></a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="post-card__content">{{ post.content|safe|truncatechars:173 }}</div>
+                <a class="post-card__open-btn" href="{{ post.get_absolute_url }}">Читать дальше</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+  </main>
+{% endblock %}

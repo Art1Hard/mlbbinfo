@@ -122,6 +122,7 @@ legend {
 :root {
 	--primary-color: #252525;
 	--secondary-color: #121212;
+	--secondary-color-06: rgba(18, 18, 18, 0.6);
 	--accent-color: #ffcc00;
 	--bg-card-color: #303030;
 	--primary-text-color: #e7e7e7;
@@ -132,6 +133,14 @@ body {
 	color: var(--primary-text-color);
 	font-family: "Dusha V5";
 	background-color: var(--primary-color);
+}
+
+.main-btn {
+	color: var(--secondary-color);
+	background-color: var(--accent-color);
+	padding: 12px 15px;
+	border-radius: 18px;
+	font-size: 32px;
 }
 
 .container {
@@ -192,25 +201,76 @@ body {
 
 .intro {
 	padding: 90px 0;
+	min-height: 990px;
+	background: radial-gradient(
+			62.18% 62.18% at 50% 23.98%,
+			rgba(0, 0, 0, 0.4) 29.73%,
+			rgba(0, 0, 0, 0) 100%
+		),
+		url("../img/intro-bg.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 .intro__title {
+	font-size: 78px;
+	text-align: center;
+	margin-bottom: 40px;
+	text-shadow: 0 4px 10px var(--secondary-color-06);
+}
+
+.intro__title span {
+	color: var(--accent-color);
+}
+
+.intro__btn {
+	display: block;
+	max-width: 430px;
+	text-align: center;
+	margin: 0 auto;
+	box-shadow: 0 4px 10px 0 var(--secondary-color-06);
+}
+
+.intro__btn:not(:last-child) {
+	background-color: var(--primary-text-color);
+	margin-bottom: 20px;
+}
+
+.intro__btn:hover {
+	color: var(--accent-color);
+	background-color: var(--secondary-color);
+}
+
+.intro__btn:not(:last-child):hover {
+	color: var(--primary-text-color);
+}
+
+/** </Intro> **/
+
+/** <Heroes> **/
+
+.heroes {
+	padding: 90px 0;
+}
+
+.heroes__title {
 	font-size: 64px;
 	text-align: center;
 	margin-bottom: 60px;
 }
 
-.intro__posts {
+.heroes__posts {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
 }
 
-.intro__post-card {
+.heroes__post-card {
 	flex: 100%;
 }
 
-/** </Intro> **/
+/** </Heroes> **/
 
 /** <Post> **/
 .post-card {
@@ -292,15 +352,30 @@ body {
 }
 
 .post-card__line {
+	display: flex;
+	column-gap: 10px;
+	justify-content: end;
 	color: var(--accent-color);
 	font-size: 20px;
+}
+
+.post-card__line-img {
+	min-width: 35px;
+	min-height: 35px;
+	width: 35px;
+	height: 35px;
+
+	transition: transform 0.1s ease-out;
+}
+
+.post-card__line-img:hover {
+	transform: scale(1.15);
 }
 
 .post-card__open-btn {
 	display: block;
 	background-color: var(--accent-color);
 	color: var(--secondary-color);
-	transition: all 0.2s ease-in;
 	font-size: 22px;
 	padding: 10px;
 	text-align: center;
@@ -309,7 +384,7 @@ body {
 
 .post-card__open-btn:hover {
 	background-color: var(--secondary-color);
-	color: var(--accent-color);
+	color: var(--primary-text-color);
 }
 
 /** </Post> **/
@@ -360,7 +435,10 @@ body {
 }
 
 .post__header-img {
+	width: 100%;
 	border-radius: 35px;
+	object-fit: cover;
+	max-height: 600px;
 }
 
 .post__header-title {

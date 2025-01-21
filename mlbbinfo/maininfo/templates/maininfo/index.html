@@ -6,37 +6,10 @@
   <main>
     <section class="intro">
       <div class="intro__container container">
-        {% show_lines %}
-        <h1 class="intro__title">{{ title }}</h1>
-
-        <ul class="intro__posts">
-          {% for post in posts %}
-            <li class="intro__post-card post-card fade-in">
-              <a class="post-card__img-cover" href="{{ post.get_absolute_url }}"><img class="post-card__img" src="{% static 'maininfo/img/post-img.jpeg' %}" alt="" /></a>
-              <div class="post-card__container">
-                <div class="post-card__header">
-                  <h2 class="post-card__name">{{ post.title|capfirst }}</h2>
-                  {% if post.lines %}
-                    <div class="post-card__column-line">
-                      <p class="post-card__line-title">Линии:</p>
-                      <p class="post-card__line">
-                        {% for line in post.lines.all %}
-                          {% if forloop.first %}
-                            {{ line|capfirst }}{% if not forloop.last %},{% endif %}
-                          {% else %}
-                            {{ line }}{% if not forloop.last %},{% endif %}
-                          {% endif %}
-                        {% endfor %}
-                      </p>
-                    </div>
-                  {% endif %}
-                </div>
-                <div class="post-card__content">{{ post.content|safe|truncatechars:173 }}</div>
-                <a class="post-card__open-btn" href="{{ post.get_absolute_url }}">Читать дальше</a>
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
+        <h1 class="intro__title">{{ title|safe|linebreaksbr }}</h1>
+        <div class="intro__btns"></div>
+        <a class="intro__btn main-btn" href="{% url 'hero' %}">Посмотреть героев</a>
+        <a class="intro__btn main-btn" href="{% url 'about' %}">Перейти к гайдам</a>
       </div>
     </section>
   </main>

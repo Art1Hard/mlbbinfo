@@ -17,5 +17,5 @@ class HeroAdmin(admin.ModelAdmin):
         "time_update",
         "time_create",
     )  # Фильтры
-    ordering = ("is_published",)  # Сортировка
+    ordering = ("title",)  # Сортировка
     readonly_fields = ("views",)

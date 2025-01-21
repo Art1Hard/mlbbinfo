@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 class Line(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
+    icon = models.ImageField(upload_to="images/icons/lines", blank=True)
 
     def __str__(self):
         return self.name
@@ -28,6 +29,8 @@ class PublishedManager(models.Manager):
 
 class Hero(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name="заголовок")
+    image = models.ImageField(upload_to="images/heroes/", blank=True)
+    alt = models.CharField(max_length=100)
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name="адрес страницы"
     )
