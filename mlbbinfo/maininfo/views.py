@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.template.defaultfilters import capfirst
 
-from .models import Hero, Line
+from .models import Hero, Line, IntroSlide
 
 menu = [
     {"title": "Герои", "url_name": "hero"},
@@ -27,7 +27,10 @@ roles_db = [
 
 
 def index(request):
-    return render(request, "maininfo/index.html")
+    intro_slides = IntroSlide.objects.all()
+
+    data = {"intro_slides": intro_slides}
+    return render(request, "maininfo/index.html", context=data)
 
 
 def about(request):

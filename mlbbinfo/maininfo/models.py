@@ -3,10 +3,22 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 
+class IntroSlide(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    image = models.ImageField(upload_to="images/intro-slider/")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "слайд в интро"
+        verbose_name_plural = "слайды в интро"
+
+
 class Line(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    icon = models.ImageField(upload_to="images/icons/lines", blank=True)
+    icon = models.ImageField(upload_to="images/icons/lines")
 
     def __str__(self):
         return self.name
@@ -51,7 +63,7 @@ class Hero(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "героя"
+        verbose_name = "герой"
         verbose_name_plural = "герои"
         ordering = ["-time_create"]
         indexes = [models.Index(fields=["-time_create"])]

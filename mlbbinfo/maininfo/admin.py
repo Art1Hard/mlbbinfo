@@ -3,6 +3,7 @@ from maininfo import models
 
 admin.site.register(models.Line)
 admin.site.register(models.BO)
+admin.site.register(models.IntroSlide)
 
 
 @admin.register(models.Hero)
