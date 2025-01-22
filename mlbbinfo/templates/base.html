@@ -7,6 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{% static 'maininfo/img/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link type="text/css" rel="stylesheet" href="{% static 'maininfo/css/styles.css' %}" />
     <title>MLBBINFO - Сайт по игре MLBB</title>
   </head>
@@ -29,6 +30,8 @@
     {% block content %}
 
     {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{% static 'maininfo/js/fade-in.js' %}"></script>
+    <script src="{% static 'maininfo/js/main-slider.js' %}"></script>
   </body>
 </html>

@@ -5,6 +5,23 @@
 {% block content %}
   <main>
     <section class="intro">
+      <!-- Slider main container -->
+      <div class="swiper intro-slider">
+        <!-- Additional required wrapper -->
+        <ul class="swiper-wrapper intro-slider__wrapper">
+          <!-- Slides -->
+          <li class="swiper-slide intro-slider__slide">
+            <img class="intro-slider__img" src="{% static 'maininfo/img/intro-slider/bg-1.jpg' %}" alt="" />
+          </li>
+          <li class="swiper-slide intro-slider__slide">
+            <img class="intro-slider__img" src="{% static 'maininfo/img/intro-slider/bg-2.jpg' %}" alt="" />
+          </li>
+          <li class="swiper-slide intro-slider__slide">
+            <img class="intro-slider__img" src="{% static 'maininfo/img/intro-slider/bg-3.jpg' %}" alt="" />
+          </li>
+        </ul>
+      </div>
+
       <div class="intro__container container">
         <div class="intro__head">
           <h1 class="intro__title">Твой <span>гид</span> в мире Mobile&nbsp;Legends</h1>
