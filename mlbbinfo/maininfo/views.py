@@ -27,11 +27,7 @@ roles_db = [
 
 
 def index(request):
-    data = {
-        "title": """Место, где ты найдёшь <span>ВСЁ</span> 
-                    об игре Mobile Legends"""
-    }
-    return render(request, "maininfo/index.html", context=data)
+    return render(request, "maininfo/index.html")
 
 
 def about(request):

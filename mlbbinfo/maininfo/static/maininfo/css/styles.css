@@ -204,7 +204,7 @@ body {
 	min-height: 990px;
 	background: radial-gradient(
 			62.18% 62.18% at 50% 23.98%,
-			rgba(0, 0, 0, 0.4) 29.73%,
+			rgba(18, 18, 18, 0.6) 30%,
 			rgba(0, 0, 0, 0) 100%
 		),
 		url("../img/intro-bg.jpg");
@@ -213,15 +213,23 @@ body {
 	background-size: cover;
 }
 
-.intro__title {
-	font-size: 78px;
+.intro__head {
+	margin-bottom: 60px;
 	text-align: center;
-	margin-bottom: 40px;
 	text-shadow: 0 4px 10px var(--secondary-color-06);
 }
 
-.intro__title span {
+.intro__head span {
 	color: var(--accent-color);
+}
+
+.intro__title {
+	font-size: 78px;
+	margin-bottom: 10px;
+}
+
+.intro__subtitle {
+	font-size: 44px;
 }
 
 .intro__btn {
