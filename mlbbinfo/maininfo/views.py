@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.template.defaultfilters import capfirst
+from django.db.models import F
 
 from .models import Hero, Line, IntroSlide
 
@@ -41,7 +42,7 @@ def about(request):
 def updateViews(request, post):
     session_key = f"viewed_post_{post.pk}"
     if not request.session.get(session_key, False):
-        post.views += 1
+        post.views = F("views") + 1
         post.save(update_fields=["views"])
         request.session[session_key] = True  # Помечаем пост как просмотренный
 
