@@ -6,7 +6,17 @@
   <main>
     <section class="heroes">
       <div class="heroes__container container">
-        {% comment %} {% show_lines %} {% endcomment %}
+        {% show_lines %}
+        <form method="get">
+          <label>
+            {% if request.GET.is_meta %}
+              <input type="checkbox" name="is_meta" value="true" checked />
+            {% else %}
+              <input type="checkbox" name="is_meta" value="true" />
+            {% endif %}Только метовые герои
+          </label>
+          <button type="submit">Фильтровать</button>
+        </form>
         <h1 class="heroes__title">{{ title }}</h1>
 
         <ul class="heroes__posts">

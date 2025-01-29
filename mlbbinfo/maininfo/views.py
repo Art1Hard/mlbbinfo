@@ -55,6 +55,10 @@ def show_post(request, post_slug):
 
 def heroes(request):
     posts = Hero.published.all()
+
+    if request.GET.get("is_meta") == "true":
+        posts = Hero.meta.all()
+
     data = {"title": "Все герои Mobile Legends", "posts": posts}
     return render(request, "maininfo/heroes.html", context=data)
 
@@ -62,6 +66,10 @@ def heroes(request):
 def show_line(request, line_slug):
     line = get_object_or_404(Line, slug=line_slug)
     posts = Hero.published.filter(lines=line)
+
+    if request.GET.get("is_meta") == "true":
+        posts = Hero.meta.filter(lines=line)
+
     data = {"title": capfirst(change_line_end(line)), "posts": posts}
     return render(request, "maininfo/heroes.html", context=data)
 

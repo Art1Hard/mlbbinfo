@@ -39,6 +39,11 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(is_published=True)
 
 
+class MetaManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_published=True, is_meta=True)
+
+
 class Hero(models.Model):
     title = models.CharField(max_length=255, unique=True, verbose_name="заголовок")
     image = models.ImageField(upload_to="images/heroes/", blank=True)
@@ -47,6 +52,7 @@ class Hero(models.Model):
         max_length=255, unique=True, db_index=True, verbose_name="адрес страницы"
     )
     lines = models.ManyToManyField(Line, related_name="heroes", db_index=True)
+    is_meta = models.BooleanField(default=False, verbose_name="метовый?")
     bo = models.ForeignKey(
         BO, on_delete=models.PROTECT, related_name="heroes", db_index=True
     )
@@ -58,6 +64,7 @@ class Hero(models.Model):
 
     objects = models.Manager()
     published = PublishedManager()
+    meta = MetaManager()
 
     def __str__(self):
         return self.title
