@@ -11,7 +11,6 @@ menu = [
     # {"title": "Линии", "url_name": "line"},
     # {"title": "Рассы", "url_name": "rase"},
     {"title": "Гайды", "url_name": "about"},
-    {"title": "Поддержать проект", "url_name": "rase"},
     # {"title": "Обратная связь", "url_name": "contact"},
     # {"title": "Добавить статью", "url_name": "add_post"},
     # {"title": "Войти", "url_name": "login"},

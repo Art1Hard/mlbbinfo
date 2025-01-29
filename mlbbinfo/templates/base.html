@@ -17,7 +17,7 @@
   <body>
     <header class="header">
       <div class="header__container container">
-        <a href="{% url 'home' %}">
+        <a class="header__logo-link" href="{% url 'home' %}">
           <svg class="header__logo">
             <use xlink:href="{% static 'maininfo/img/sprite.svg' %}#logo"></use>
           </svg>
@@ -33,6 +33,48 @@
     {% block content %}
 
     {% endblock %}
+
+    <footer class="footer">
+      <div class="footer__main">
+        <div class="footer__container container">
+          <a class="footer__logo-link" href="{% url 'home' %}">
+            <svg class="footer__logo">
+              <use xlink:href="{% static 'maininfo/img/sprite.svg' %}#logo"></use>
+            </svg>
+          </a>
+
+          <nav class="footer__nav">
+            <div class="footer__nav-block">
+              <h3 class="footer__nav-title">Навигация</h3>
+              <ul class="footer__list">
+                {% show_menu request %}
+              </ul>
+            </div>
+
+            <div class="footer__nav-block">
+              <h3 class="footer__nav-title">Доп. информация</h3>
+              <ul class="footer__list">
+                <li class="nav__item">
+                  <a class="nav__link" href="https://art1hard.github.io/taplink/">Разработчик сайта</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#">Поддержать проект</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#">Политика конфиденциальности</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer__footer">
+        <div class="footer__footer-container container">
+          <small class="footer__copy">&copy; 2025 MLBB INFO. Все права защищены.</small>
+        </div>
+      </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script defer src="{% static 'maininfo/js/fade-in.js' %}"></script>
     <script defer src="{% static 'maininfo/js/main-slider.js' %}"></script>
